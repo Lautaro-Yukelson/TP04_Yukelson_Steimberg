@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Vista-Equipos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Vista de los Equipos</h1>
+    @{
+        if (ViewBag.dicEquipos != null){
+            <ul>
+               @{
+                    foreach (var equipo in ViewBag.dicEquipos)
+                    {
+                        <li>
+                            <td>@equipo.Key</td>
+                            <ul>
+                                <li>@equipo.Value.Medias</li>
+                                <li>@equipo.Value.Pantalon</li>
+                                <li>@equipo.Value.Camiseta</li>
+                            </ul>
+                        </li>                       
+                    }
+                }
+                <p>Puede cargar más equipos clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
+            </ul>
+        } else {
+            <p>Todavia no hay ningun equipo cargado</p>
+            <p>Puede cargar nuevos equipos clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
+        }
+    }
+</div>
