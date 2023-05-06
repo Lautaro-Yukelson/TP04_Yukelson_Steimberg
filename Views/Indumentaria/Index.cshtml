@@ -3,28 +3,36 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Vista de los Equipos</h1>
+    <h1 class="display-4">Vista de las indumentarias</h1>
     @{
-        if (ViewBag.dicEquipos != null){
-            <ul>
-               @{
-                    foreach (var equipo in ViewBag.dicEquipos)
-                    {
-                        <li>
-                            <td>@equipo.Key</td>
-                            <ul>
-                                <li>@equipo.Value.Medias</li>
-                                <li>@equipo.Value.Pantalon</li>
-                                <li>@equipo.Value.Camiseta</li>
-                            </ul>
-                        </li>                       
+        if (ViewBag.algoCargado){
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre del Equipo</th>
+                        <th>Medias</th>
+                        <th>Pantalones</th>
+                        <th>Remeras</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var equipo in ViewBag.dicEquipos)
+                        {
+                            <tr>
+                                <td>@equipo.Key</td>
+                                <td>@equipo.Value.Medias</td>
+                                <td>@equipo.Value.Pantalon</td>
+                                <td>@equipo.Value.Remera</td>     
+                            </tr>                
+                        }
                     }
-                }
-                <p>Puede cargar más equipos clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
-            </ul>
+                </tbody>
+            </table>
+                <p>Puede cargar crear mas indumentaria clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
         } else {
-            <p>Todavia no hay ningun equipo cargado</p>
-            <p>Puede cargar nuevos equipos clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
+            <p>Todavia no hay ninguna indumentaria creada</p>
+            <p>Puede cargar nuevas indumentarias clickeando <a href='@Url.Action("SelectIndumentaria","Indumentaria")' alt="Ir a la seccion de SelectIndumentaria">aquí</a></p>
         }
     }
 </div>

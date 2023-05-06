@@ -1,0 +1,15 @@
+@{
+ViewData["Title"] = "Indumentaria";
+}
+
+<div class="text-center">
+    @{
+        if (ViewBag.Error != null){
+            <h1>Error en la creacion de la indumentaria</h1>
+            <p>@ViewBag.Error</p>
+        } else if (ViewBag.Success != null) {
+            <h1 class="display-4">@ViewBag.Success</h1>
+        }
+    }
+    <button class="btn btn-primary"><a id="volver-menu" href="~/Indumentaria/Index">Volver al menu principal</a></button>
+</div>

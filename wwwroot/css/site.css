@@ -2,6 +2,12 @@ html {
   font-size: 14px;
 }
 
+
+
+#volver-menu{
+  color: #fff;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -19,4 +25,63 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+a, a:hover{
+  text-decoration: none;
+}
+
+.table{
+  border: solid 1px black;
+}
+
+html {
+  font-size: 14px;
+}
+
+#volver-menu{
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+a, a:hover{
+  text-decoration: none;
+}
+
+.table{
+  border: solid 1px black;
+}
+
+.form-todo{
+  display: flex;
+  flex-direction: row;
+}
+
+.form-crear {
+  width: 60%;
+}
+
+.form-tabla {
+  width: 40%;
+  height: 100%;
+
+  margin-left: 2vw;
 }

@@ -2,6 +2,36 @@
     ViewData["Title"] = "Indumentaria";
 }
 
-<div class="text-center">
-    <h1 class="display-4">SelectIndumentaria</h1>
+<div class="text-center form-todo">
+    <form action="~/Indumentaria/GuardarIndumentaria" method="post" class="form-crear">
+        <h1 class="display-4">Crear Indumentaria</h1>
+        <br/>
+        <input type="text" class="form-control" name="equipo" placeholder="Nombre del Equipo" required>
+        <br/>
+        <input type="text" class="form-control" name="media" placeholder="Media" required>
+        <br/>
+        <input type="text" class="form-control" name="pantalon" placeholder="Pantalon" required>
+        <br/>
+        <input type="text" class="form-control" name="remera" placeholder="Remera" required>
+        <br/>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+    <table class="table table-hover form-tabla">
+        <thead>
+            <tr>
+                <th>Medias</th>
+                <th>Pantalones</th>
+                <th>Remeras</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 10; i++) {
+                <tr>
+                    <td>@Html.Raw(ViewBag.ListaMedias[i])</td>
+                    <td>@Html.Raw(ViewBag.ListaPantalones[i])</td>
+                    <td>@Html.Raw(ViewBag.ListaRemeras[i])</td>
+                </tr>
+            }              
+        </tbody>
+    </table>
 </div>
