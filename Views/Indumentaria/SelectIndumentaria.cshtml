@@ -3,16 +3,16 @@
 }
 
 <div class="text-center form-todo">
-    <form action="~/Indumentaria/GuardarIndumentaria" method="post" class="form-crear">
+    <form action="~/Indumentaria/GuardarIndumentaria" method="post" class="form-crear" name="creador">
         <h1 class="display-4">Crear Indumentaria</h1>
         <br/>
         <input type="text" class="form-control" name="equipo" placeholder="Nombre del Equipo" required>
         <br/>
-        <input type="text" class="form-control" name="media" placeholder="Media" required>
+        <input type="text" class="form-control" name="media" placeholder="Media" required id="media">
         <br/>
-        <input type="text" class="form-control" name="pantalon" placeholder="Pantalon" required>
+        <input type="text" class="form-control" name="shorts" placeholder="Short" required id="shorts">
         <br/>
-        <input type="text" class="form-control" name="remera" placeholder="Remera" required>
+        <input type="text" class="form-control" name="remera" placeholder="Remera" required id="remera">
         <br/>
         <button class="btn btn-primary" type="submit">Guardar</button>
     </form>
@@ -20,16 +20,23 @@
         <thead>
             <tr>
                 <th>Medias</th>
-                <th>Pantalones</th>
+                <th>Shorts</th>
                 <th>Remeras</th>
             </tr>
         </thead>
+        
         <tbody>
             @for (int i = 0; i < 10; i++) {
+                string medias = "medias" + i;
+                string shorts = "shorts" + i;
+                string remeras = "remeras" + i;
+                string direcMedias = "../../assets/medias/" + ViewBag.ListaMedias[i];
+                string direcShorts = "../../assets/shorts/" + ViewBag.ListaShorts[i];
+                string direcRemeras = "../../assets/remeras/" + ViewBag.ListaRemeras[i];
                 <tr>
-                    <td>@Html.Raw(ViewBag.ListaMedias[i])</td>
-                    <td>@Html.Raw(ViewBag.ListaPantalones[i])</td>
-                    <td>@Html.Raw(ViewBag.ListaRemeras[i])</td>
+                    <td><img src= "@Html.Raw(direcMedias)" alt="imagen medias" width="100" height="100" id="@Html.Raw(medias)" onclick="setearMedia()"></td>
+                    <td><img src= "@Html.Raw(direcShorts)" alt="imagen short" width="100" height="100" id="@Html.Raw(shorts)" onclick="setearShort()"></td>
+                    <td><img src= "@Html.Raw(direcRemeras)" alt="imagen remera" width="100" height="100" id="@Html.Raw(remeras)" onclick="setearRemera()"></td>
                 </tr>
             }              
         </tbody>
