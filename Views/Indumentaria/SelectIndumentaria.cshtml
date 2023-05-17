@@ -2,37 +2,44 @@
     ViewData["Title"] = "Indumentaria";
 }
 
-<div class="text-center">
+<form action="~/Indumentaria/GuardarIndumentaria" method="post" class="form-crear text-centerd" name="creador">
     <h1>Crear Indumentaria!</h1>
+    <div class="completables">
+        <input type="text" class="form-control" name="equipo" placeholder="Nombre del Equipo" required>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </div>
+    <input type="text" class="form-control" name="media" placeholder="Media" required id="media" hidden>
+    <input type="text" class="form-control" name="shorts" placeholder="Short" required id="shorts" hidden>
+    <input type="text" class="form-control" name="remera" placeholder="Remera" required id="remera" hidden>
     <table class="table">
         <tbody>
             <tr>
-                @for (int i = 0; i < 10; i++) {
+                @for (int i = 0; i < @ViewBag.cantMedias; i++) {
                     string medias = "medias" + i;
-                    string direcMedias = "../../assets/medias/" + ViewBag.ListaMedias[i];
+                    string direcMedias = "../../assets/medias/" + ViewBag.ListaMedias[i] + ".webp";
                     <td class="contenedor-imagen">
-                        <img class="no-select imagenTabla" src="@Html.Raw(direcMedias)" alt="imagen medias" id="@Html.Raw(medias)">
+                        <img class="no-select imagenTabla" src="@Html.Raw(direcMedias)" alt="Imagen Media" id="@Html.Raw(medias)" onclick="setearMedia(event)">
                     </td>
                 }  
             </tr>
             <tr>
-                @for (int i = 0; i < 10; i++) {
+                @for (int i = 0; i < @ViewBag.cantShorts; i++) {
                     string shorts = "shorts" + i;
-                    string direcShorts = "../../assets/shorts/" + ViewBag.ListaShorts[i];
+                    string direcShorts = "../../assets/shorts/" + ViewBag.ListaShorts[i] + ".webp";
                     <td class="contenedor-imagen">
-                        <img class="no-select imagenTabla" src="@Html.Raw(direcShorts)" alt="imagen short" id="@Html.Raw(shorts)">
+                        <img class="no-select imagenTabla" src="@Html.Raw(direcShorts)" alt="Imagen Short" id="@Html.Raw(shorts)" onclick="setearShort(event)">
                     </td>
                 } 
             </tr>
             <tr>
-                @for (int i = 0; i < 10; i++) {
+                @for (int i = 0; i < @ViewBag.cantRemeras; i++) {
                     string remeras = "remeras" + i;
-                    string direcRemeras = "../../assets/remeras/" + ViewBag.ListaRemeras[i];
+                    string direcRemeras = "../../assets/remeras/" + ViewBag.ListaRemeras[i] + ".webp";
                     <td class="contenedor-imagen">
-                        <img class="no-select imagenTabla" src="@Html.Raw(direcRemeras)" alt="imagen remera" id="@Html.Raw(remeras)">
+                        <img class="no-select imagenTabla" src="@Html.Raw(direcRemeras)" alt="Imagen Remera" id="@Html.Raw(remeras)" onclick="setearRemera(event)">
                     </td>
                 } 
             </tr>
         </tbody>
     </table>
-</div>
+</form>

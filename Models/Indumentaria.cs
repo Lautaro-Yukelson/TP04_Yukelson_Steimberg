@@ -7,13 +7,13 @@ namespace TP04_Yukelson_Steimberg.Models
 {
     public class Indumentaria
     {
-        public string Medias { get; private set; }
+        public string Media { get; private set; }
         public string Short { get; private set; }
         public string Remera { get; private set; }
 
         public Indumentaria(string medias, string shorts, string remera)
         {
-            Medias = medias;
+            Media = medias;
             Short = shorts;
             Remera = remera;
         }

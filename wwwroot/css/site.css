@@ -28,24 +28,30 @@ a, a:hover{
   text-decoration: none;
 }
 
-/* -----------------------------------------------------------------------------------------------------*/
-
-.table{
-  border: solid 1px black;
+#volver-menu{
+  color: #fff;
 }
+/* -----------------------------------------------------------------------------------------------------*/
 
 .form-crear {
   width: 100%;
 }
 
-.form-tabla {
-  width: 100%;
-  height: 100%;
+.completables{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* -----------------------------------------------------------------------------------------------------*/
+
+.table{
+  margin-top: 15px;
+  border: solid 1px black;
 }
 
 .imagenTabla{
-  width: 100px;
   height: 100px;
+  width: auto;
 }
 
 .select {

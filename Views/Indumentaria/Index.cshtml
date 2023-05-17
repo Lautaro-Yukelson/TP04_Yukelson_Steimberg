@@ -19,11 +19,14 @@
                     @{
                         foreach (var equipo in ViewBag.dicEquipos)
                         {
+                            string direcMedias = "../../assets/medias/" + equipo.Value.Media + ".webp";
+                            string direcShorts = "../../assets/shorts/" + equipo.Value.Short + ".webp";
+                            string direcRemeras = "../../assets/remeras/" + equipo.Value.Remera + ".webp";
                             <tr>
-                                <td>@equipo.Key</td>
-                                <td>@equipo.Value.Medias</td>
-                                <td>@equipo.Value.Short</td>
-                                <td>@equipo.Value.Remera</td>     
+                                <td class="td-key">@equipo.Key</td>
+                                <td><img class="imagenTabla" src="@Html.Raw(direcMedias)" alt="Imagen Media"></td>
+                                <td><img class="imagenTabla" src="@Html.Raw(direcShorts)" alt="Imagen Short"></td>
+                                <td><img class="imagenTabla" src="@Html.Raw(direcRemeras)" alt="Imagen Remera"></td> 
                             </tr>                
                         }
                     }

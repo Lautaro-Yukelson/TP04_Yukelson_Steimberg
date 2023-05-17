@@ -24,8 +24,11 @@ namespace TP04_Yukelson_Steimberg.Controllers
         {
             ViewBag.ListaEquipos = Equipos.ListaEquipos;
             ViewBag.ListaMedias = Equipos.ListaMedias;
+            ViewBag.cantMedias = Equipos.ListaMedias.Count();
             ViewBag.ListaShorts = Equipos.ListaShorts;
+            ViewBag.cantShorts = Equipos.ListaShorts.Count();
             ViewBag.ListaRemeras = Equipos.ListaRemeras;
+            ViewBag.cantRemeras = Equipos.ListaRemeras.Count();
             return View();
         }
 
@@ -33,14 +36,16 @@ namespace TP04_Yukelson_Steimberg.Controllers
         public IActionResult GuardarIndumentaria(string equipo, string media, string shorts, string remera)
         {
             ViewBag.algoCargado = false;
-            if (string.IsNullOrEmpty(media) || !Equipos.ListaMedias.Contains(media)) ViewBag.Error = "El parametro MEDIA ha sido mal cargado";
-            else if (string.IsNullOrEmpty(shorts) || !Equipos.ListaShorts.Contains(shorts)) ViewBag.Error = "El parametro SHORT ha sido mal cargado";
-            else if (string.IsNullOrEmpty(remera) || !Equipos.ListaRemeras.Contains(remera)) ViewBag.Error = "El parametro REMERA ha sido mal cargado";
-            else
-            {
-                Equipos.EquiposIndumentaria.Add(equipo, new Indumentaria(media, shorts, remera));
-                Equipos.algoCargado = true;
-                ViewBag.Success = "La indumentaria se ha creado correctamente.";
+            if(!Equipos.EquiposIndumentaria.ContainsKey(equipo)){
+                if (string.IsNullOrEmpty(media) || !Equipos.ListaMedias.Contains(media)) ViewBag.Error = "El parametro MEDIA ha sido mal cargado";
+                else if (string.IsNullOrEmpty(shorts) || !Equipos.ListaShorts.Contains(shorts)) ViewBag.Error = "El parametro SHORT ha sido mal cargado";
+                else if (string.IsNullOrEmpty(remera) || !Equipos.ListaRemeras.Contains(remera)) ViewBag.Error = "El parametro REMERA ha sido mal cargado";
+                else
+                {
+                    Equipos.EquiposIndumentaria.Add(equipo, new Indumentaria(media, shorts, remera));
+                    Equipos.algoCargado = true;
+                    ViewBag.Success = "La indumentaria se ha creado correctamente.";
+                }
             }
             return View();
         }
@@ -52,7 +57,7 @@ namespace TP04_Yukelson_Steimberg.Controllers
         }
 
         [HttpPost]
-        public void SubirNuevaIndumentaria(string nombre, string categoria, IFormFile MyFile){
+        public void SubirNuevaIndumentaria(string categoria, IFormFile MyFile){
             if (MyFile.Length>0){
                 string wwwRootLocal = this.Environment.ContentRootPath + @$"\wwwroot\assets\{categoria}\{MyFile.FileName}";
                 using (var stream = System.IO.File.Create(wwwRootLocal)){

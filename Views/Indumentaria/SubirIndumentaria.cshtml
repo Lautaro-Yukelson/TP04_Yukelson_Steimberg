@@ -6,15 +6,13 @@
     <form action='@Url.Action("SubirNuevaIndumentaria", "Indumentaria")' method="post" enctype="multipart/form-data" class="form-crear">
         <h1 class="display-4">Subir Ind. Personalizada!</h1>
         <br/>
-        <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Indumentria" required>
-        <br/>
         <select name="categoria" class="form-select">
             <option value="medias">Media</option>
             <option value="shorts">Short</option>
             <option value="remeras">Remera</option>
         </select>
         <br>
-        <input type="file" class="form-control" name="MyFile" placeholder="Archivo">
+        <input type="file" class="form-control" name="MyFile">
         <br>
         <button class="btn btn-primary" type="submit">Subir</button>
     </form>
